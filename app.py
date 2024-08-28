@@ -2,7 +2,7 @@ import streamlit as st
 from utils import perform_search, fetch_queries_from_file
 import time
 
-st.title("Web Search Application")
+st.title("Mr.crawller")
 
 domain = st.text_input("Digite o domínio alvo (por exemplo, 'example.com'):")
 queries_input = st.text_area("Digite as queries (dorks) específicas, separadas por vírgulas (deixe vazio para usar a wordlist padrão):")
