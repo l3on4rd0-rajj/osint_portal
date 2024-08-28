@@ -2,8 +2,20 @@ import random
 import time
 import requests
 from bs4 import BeautifulSoup
-from fake_useragent import UserAgent
 from urllib.parse import urlparse
+
+# Lista de user agents comuns
+USER_AGENTS = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:90.0) Gecko/20100101 Firefox/90.0",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Edge/92.0.902.67",
+    # Adicione mais user agents conforme necessário
+]
+
+def generate_random_user_agent():
+    """Gera um user-agent aleatório a partir de uma lista predefinida."""
+    return random.choice(USER_AGENTS)
 
 def fetch_queries_from_file(file_path):
     """Obtém consultas (dorks) de um arquivo de texto."""
@@ -16,11 +28,6 @@ def fetch_queries_from_file(file_path):
     except Exception as e:
         print(f"Erro ao ler o arquivo {file_path}: {e}")
         return []
-
-def generate_random_user_agent():
-    """Gera um user-agent aleatório."""
-    user_agent = UserAgent()
-    return user_agent.random
 
 def get_search_results(query, user_agent):
     """Obtém resultados de busca da Google para uma consulta específica."""
