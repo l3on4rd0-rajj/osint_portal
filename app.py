@@ -75,4 +75,3 @@ if st.button("Buscar"):
             )
     else:
         st.error("Por favor, preencha todos os campos.")
-
