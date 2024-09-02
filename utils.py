@@ -79,3 +79,12 @@ def perform_search(domain, queries, search_mode, save_to_file):
             print(f"Erro ao salvar os resultados em arquivo: {e}")
 
     return results
+
+def save_results_to_file(results):
+    """Salva os resultados da busca em um arquivo de texto."""
+    try:
+        with open("filtered_urls.txt", 'a') as file:
+            for url in results:
+                file.write(url + '\n')
+    except IOError as e:
+        print(f"Erro ao salvar os resultados em arquivo: {e}")
