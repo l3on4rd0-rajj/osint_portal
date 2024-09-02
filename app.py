@@ -1,5 +1,3 @@
-app.py
-
 import streamlit as st
 from utils import perform_search, fetch_queries_from_file
 import time
