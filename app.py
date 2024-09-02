@@ -1,5 +1,7 @@
+app.py
+
 import streamlit as st
-from utils import perform_search, fetch_queries_from_file, save_results_to_file
+from utils import perform_search, fetch_queries_from_file
 import time
 
 st.title("Mr.crawller")
@@ -25,9 +27,7 @@ results_placeholder = st.container()
 progress_bar = st.progress(0)
 
 if st.button("Buscar"):
-    if search_mode == "Dark Web":
-        st.warning("A implementação da busca na Dark Web será incluída em breve. Por favor, aguarde.")
-    elif domain:
+    if domain:
         if queries_input:
             queries = queries_input.split(',')
         else:
@@ -53,16 +53,12 @@ if st.button("Buscar"):
             progress_bar.progress((i + 1) / total_queries)
 
             with results_placeholder:
-                st.write(f"**Resultados para a dork:** `{query}`")
+                st.write(f"**Resultados para a dork:** {query}")
                 for result in new_results:
                     st.write(f"- {result}")
                 st.write("---")
             
             time.sleep(1)
-        
-        # Salvar os resultados até o momento, se selecionado
-        if save_to_file == "Sim" and all_results:
-            save_results_to_file(all_results)
 
         if st.session_state.stop_search:
             st.warning("Busca interrompida pelo usuário.")
